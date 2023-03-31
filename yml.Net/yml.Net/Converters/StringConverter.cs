@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace yml.Net.Converters
 {
@@ -17,7 +18,9 @@ namespace yml.Net.Converters
 
         public override object Deserialize(string s)
         {
-            throw new NotImplementedException();
+            if (!s.Contains("\n"))
+                return s;
+            return s.Remove(0, 1).Replace("\n    ", "\n").Trim();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace yml.Net
+﻿using System;
+
+namespace yml.Net
 {
     public class YmlConvert
     {
@@ -19,6 +21,16 @@
         public static string Serialize(object obj, YmlSerializer serializer)
         {
             return serializer.ToString(obj);
+        }
+        
+        public static T Deserialize<T>(string str)
+        {
+            return Deserialize<T>(str, DefaultSerializer);
+        }
+
+        public static T Deserialize<T>(string str, YmlSerializer serializer)
+        {
+            return (T)serializer.FromString(str, typeof(T));
         }
     }
 }

@@ -10,5 +10,6 @@ namespace yml.Net
         public abstract object Deserialize(string s);
         
         public YmlSerializer Serializer { get; set; }
+        public Type FullTargetType { get; set; }
     }
 }
