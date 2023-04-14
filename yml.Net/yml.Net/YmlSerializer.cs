@@ -13,6 +13,9 @@ namespace yml.Net
         private bool _convertersInit = false;
         internal string ToString(object o)
         {
+            if (o == null)
+                return "";
+            
             if (!_convertersInit)
             {
                 foreach (var typeConverter in _converters)
